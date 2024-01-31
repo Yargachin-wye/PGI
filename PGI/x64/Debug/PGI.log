@@ -1,2 +1,18 @@
 ﻿  main.cpp
-  PGI.vcxproj -> C:\Users\Yargachin\source\repos\PGI\x64\Debug\PGI.exe
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(102,42): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(102,56): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(102,70): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(102,84): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(124,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(124,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(124,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(137,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(137,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(137,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(150,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(150,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(150,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(164,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(164,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+C:\Users\henry\OneDrive\Documents\GitHub\PGI\PGI\main.cpp(164,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+  PGI.vcxproj -> C:\Users\henry\OneDrive\Documents\GitHub\PGI\x64\Debug\PGI.exe

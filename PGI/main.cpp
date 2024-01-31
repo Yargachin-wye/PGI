@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <iostream>
+#include <fstream>
+#include <vector>
 struct  head {
 	unsigned short id;
 	unsigned long  f_size;
@@ -96,7 +99,7 @@ void addBorder(const char* inputFileName, const char* outputFileName, int border
 
 	// Запись расширенной цветовой палитры с учетом рамки
 	for (int i = 0; i < 30; i++) {
-		unsigned char frameColor[4] = { 255, 0, 0, 0 }; // Например, красный цвет для рамки
+		unsigned char frameColor[4] = { rand() % 255, rand() % 255, rand() % 255, rand() % 255 }; // Например, красный цвет для рамки
 		fwrite(frameColor, sizeof(frameColor), 1, modified);
 	}
 
@@ -118,7 +121,7 @@ void addBorder(const char* inputFileName, const char* outputFileName, int border
 	for (int i = 0; i < 15; i++) {
 		// Добавление 15 пикселей сверху
 		for (int j = 0; j < modifiedHeader.width; j++) {
-			unsigned char framePixel[3] = { 255, 0, 0 }; // Например, красный цвет для рамки
+			unsigned char framePixel[3] = { rand() % 255, rand() % 255, rand() % 255 }; // Например, красный цвет для рамки
 			fwrite(framePixel, sizeof(framePixel), 1, modified);
 		}
 		// Добавление выравнивающих байтов
@@ -131,7 +134,7 @@ void addBorder(const char* inputFileName, const char* outputFileName, int border
 	for (int y = 0; y < originalHeader.height; y++) {
 		// Добавление 15 пикселей слева
 		for (int i = 0; i < 15; i++) {
-			unsigned char framePixel[3] = { 255, 0, 0 }; // Например, красный цвет для рамки
+			unsigned char framePixel[3] = { rand() % 255, rand() % 255, rand() % 255 }; // Например, красный цвет для рамки
 			fwrite(framePixel, sizeof(framePixel), 1, modified);
 		}
 
@@ -144,7 +147,7 @@ void addBorder(const char* inputFileName, const char* outputFileName, int border
 
 		// Добавление 15 пикселей справа
 		for (int i = 0; i < 15; i++) {
-			unsigned char framePixel[3] = { 255, 0, 0 }; // Например, красный цвет для рамки
+			unsigned char framePixel[3] = { rand() % 255, rand() % 255, rand() % 255 }; // Например, красный цвет для рамки
 			fwrite(framePixel, sizeof(framePixel), 1, modified);
 		}
 
@@ -158,7 +161,7 @@ void addBorder(const char* inputFileName, const char* outputFileName, int border
 	for (int i = 0; i < 15; i++) {
 		// Добавление 15 пикселей снизу
 		for (int j = 0; j < modifiedHeader.width; j++) {
-			unsigned char framePixel[3] = { 255, 0, 0 }; // Например, красный цвет для рамки
+			unsigned char framePixel[3] = { rand() % 255, rand() % 255, rand() % 255 }; // Например, красный цвет для рамки
 			fwrite(framePixel, sizeof(framePixel), 1, modified);
 		}
 		// Добавление выравнивающих байтов
@@ -171,14 +174,62 @@ void addBorder(const char* inputFileName, const char* outputFileName, int border
 	fclose(original);
 	fclose(modified);
 }
+void rotateBMP(const char* inputFileName, const char* outputFileName) {
+	std::ifstream inputFile(inputFileName, std::ios::binary);
 
+	if (!inputFile.is_open()) {
+		std::cerr << "Ошибка открытия файла: " << inputFileName << std::endl;
+		return;
+	}
+
+	// Считываем заголовок
+	head fileHeader;
+	inputFile.read(reinterpret_cast<char*>(&fileHeader), sizeof(fileHeader));
+
+	// Проверяем сигнатуру BMP файла
+	if (fileHeader.id != 0x4D42) {
+		std::cerr << "Неверный формат BMP файла" << std::endl;
+		return;
+	}
+
+	// Вычисляем новую ширину и высоту после поворота на 90 градусов
+	long newWidth = fileHeader.height;
+	long newHeight = fileHeader.width;
+
+	// Создаем временный буфер для хранения пикселей
+	std::vector<char> pixelBuffer(fileHeader.sizeimage);
+	inputFile.read(pixelBuffer.data(), fileHeader.sizeimage);
+
+	// Переворачиваем пиксели на 90 градусов
+	for (long y = 0; y < fileHeader.height; ++y) {
+		for (long x = 0; x < fileHeader.width; ++x) {
+			long oldIndex = y * fileHeader.width * 3 + x * 3;
+			long newIndex = (fileHeader.width - x - 1) * newWidth * 3 + y * 3;
+
+			// Копируем пиксель из оригинала в новое место
+			for (int i = 0; i < 3; ++i) {
+				pixelBuffer[newIndex + i] = pixelBuffer[oldIndex + i];
+			}
+		}
+	}
+
+	// Записываем измененный файл
+	std::ofstream outputFile(outputFileName, std::ios::binary);
+	outputFile.write(reinterpret_cast<const char*>(&fileHeader), sizeof(fileHeader));
+	outputFile.write(pixelBuffer.data(), fileHeader.sizeimage);
+
+	std::cout << "Файл успешно перевернут и сохранен в: " << outputFileName << std::endl;
+}
 int main() {
 
 	setlocale(LC_ALL, "");
 
 	convertToBW("../res/Lake.bmp", "../res/Lake_BW.bmp");
 	addBorder("../res/Lake.bmp", "../res/Lake_Bordered.bmp", 15);
+	rotateBMP("../res/Lake.bmp", "../res/Lake_Rotated.bmp");
 	printf("Преобразование завершено.\n");
+
+
 
 	return 0;
 }
