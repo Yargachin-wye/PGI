@@ -8,6 +8,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <array>
+#include <graphics.h>
 struct  head {
 	unsigned short id;
 	unsigned long  f_size;
@@ -25,7 +27,7 @@ struct  head {
 	unsigned long  clrused;
 	unsigned long  clrimp;
 } head_file;
-
+/*
 void convertToBW(const char* inputFileName, const char* outputFileName) {
 	FILE* inputFile;
 	FILE* outputFile;
@@ -174,62 +176,131 @@ void addBorder(const char* inputFileName, const char* outputFileName, int border
 	fclose(original);
 	fclose(modified);
 }
-void rotateBMP(const char* inputFileName, const char* outputFileName) {
-	std::ifstream inputFile(inputFileName, std::ios::binary);
 
-	if (!inputFile.is_open()) {
-		std::cerr << "Ошибка открытия файла: " << inputFileName << std::endl;
+void rotateBMP(const std::string& input_filename, const std::string& output_filename) {
+	std::ifstream input_file(input_filename, std::ios::binary);
+	if (!input_file.is_open()) {
+		std::cerr << "Error opening input file: " << input_filename << std::endl;
 		return;
 	}
 
-	// Считываем заголовок
-	head fileHeader;
-	inputFile.read(reinterpret_cast<char*>(&fileHeader), sizeof(fileHeader));
+	head header;
+	input_file.read(reinterpret_cast<char*>(&header), sizeof(head));
 
-	// Проверяем сигнатуру BMP файла
-	if (fileHeader.id != 0x4D42) {
-		std::cerr << "Неверный формат BMP файла" << std::endl;
+	if (header.bitperpixel != 24) {
+		std::cerr << "This program supports only TrueColor BMP files (24 bits per pixel)." << std::endl;
 		return;
 	}
 
-	// Вычисляем новую ширину и высоту после поворота на 90 градусов
-	long newWidth = fileHeader.height;
-	long newHeight = fileHeader.width;
+	int32_t new_width = header.height;
+	int32_t new_height = header.width;
 
-	// Создаем временный буфер для хранения пикселей
-	std::vector<char> pixelBuffer(fileHeader.sizeimage);
-	inputFile.read(pixelBuffer.data(), fileHeader.sizeimage);
+	// Update header with new dimensions
+	header.width = new_width;
+	header.height = new_height;
+	header.sizeimage = (new_width * 3 + (4 - (new_width * 3) % 4) % 4) * new_height + header.bm_offset;
 
-	// Переворачиваем пиксели на 90 градусов
-	for (long y = 0; y < fileHeader.height; ++y) {
-		for (long x = 0; x < fileHeader.width; ++x) {
-			long oldIndex = y * fileHeader.width * 3 + x * 3;
-			long newIndex = (fileHeader.width - x - 1) * newWidth * 3 + y * 3;
+	std::ofstream output_file(output_filename, std::ios::binary);
+	if (!output_file.is_open()) {
+		std::cerr << "Error opening output file: " << output_filename << std::endl;
+		return;
+	}
 
-			// Копируем пиксель из оригинала в новое место
-			for (int i = 0; i < 3; ++i) {
-				pixelBuffer[newIndex + i] = pixelBuffer[oldIndex + i];
-			}
+	// Write updated header to the output file
+	output_file.write(reinterpret_cast<const char*>(&header), sizeof(head));
+
+	std::array<char, 3> pixel_data;
+
+	// Rotate and transpose the image
+	for (int x = 0; x < header.width; ++x) {
+		for (int y = 0; y < header.height; ++y) {
+			int original_index = (header.height - y - 1) * (header.width * 3 + (4 - (header.width * 3) % 4) % 4) + x * 3;
+			int new_index = x * (new_width * 3 + (4 - (new_width * 3) % 4) % 4) + y * 3;
+			input_file.seekg(header.bm_offset + original_index);
+			input_file.read(pixel_data.data(), pixel_data.size());
+			output_file.seekp(header.bm_offset + new_index);
+			output_file.write(pixel_data.data(), pixel_data.size());
 		}
 	}
 
-	// Записываем измененный файл
-	std::ofstream outputFile(outputFileName, std::ios::binary);
-	outputFile.write(reinterpret_cast<const char*>(&fileHeader), sizeof(fileHeader));
-	outputFile.write(pixelBuffer.data(), fileHeader.sizeimage);
+	// Add padding zeros to the end of each row
+	for (int y = 0; y < new_height; ++y) {
+		int start_index = y * (new_width * 3 + (4 - (new_width * 3) % 4) % 4);
+		int end_index = (y + 1) * (new_width * 3 + (4 - (new_width * 3) % 4) % 4);
+		for (int i = start_index; i < end_index; ++i) {
+			output_file.put('\0');
+		}
+	}
 
-	std::cout << "Файл успешно перевернут и сохранен в: " << outputFileName << std::endl;
+	std::cout << "Transformation completed. Result saved to " << output_filename << "." << std::endl;
 }
+*/
+void save16ColorBMP(const char* filename, int width, int height) {
+	
+	std::ofstream bmpFile(filename, std::ios::binary);
+
+	// BMP header
+	char header[54] = {
+		'B', 'M',            // Signature
+		0, 0, 0, 0,           // File size
+		0, 0, 0, 0,           // Reserved
+		54, 0, 0, 0,          // Image data offset
+		40, 0, 0, 0,          // Header size
+		static_cast<char>(width), static_cast<char>(width >> 8), static_cast<char>(width >> 16), static_cast<char>(width >> 24),  // Width
+		static_cast<char>(height), static_cast<char>(height >> 8), static_cast<char>(height >> 16), static_cast<char>(height >> 24),  // Height
+		1, 0,                 // Color planes
+		4, 0,                 // Bits per pixel
+		0, 0, 0, 0,           // Compression
+		0, 0, 0, 0,           // Image size
+		0, 0, 0, 0,           // Horizontal resolution
+		0, 0, 0, 0,           // Vertical resolution
+		16, 0,                // Number of colors in the palette
+		0, 0, 0, 0            // Number of important colors
+	};
+
+	bmpFile.write(header, sizeof(header));
+
+	// Palette for 16 colors
+	for (int i = 0; i < 16; ++i) {
+		char color[4] = { static_cast<char>(i * 16), static_cast<char>(i * 16), static_cast<char>(i * 16), 0 };
+		bmpFile.write(color, sizeof(color));
+	}
+
+	int color;
+	for (int y = height - 1; y >= 0; --y) {
+		for (int x = 0; x < width; ++x) {
+			// Example: Assign a color based on x and y position
+			color = (x / 32) % 16;
+
+			// Writing pixel data
+			char pixel[2] = { static_cast<char>(color), 0 };
+			bmpFile.write(pixel, sizeof(pixel));
+		}
+		// Padding to align scanlines on 4-byte boundaries
+		char padding[3] = { 0, 0, 0 };
+		bmpFile.write(padding, (4 - (width * 2) % 4) % 4);
+	}
+
+	bmpFile.close();
+}
+
+
 int main() {
 
 	setlocale(LC_ALL, "");
 
-	convertToBW("../res/Lake.bmp", "../res/Lake_BW.bmp");
-	addBorder("../res/Lake.bmp", "../res/Lake_Bordered.bmp", 15);
-	rotateBMP("../res/Lake.bmp", "../res/Lake_Rotated.bmp");
+	// convertToBW("../res/Lake.bmp", "../res/Lake_BW.bmp");
+	// addBorder("../res/Lake.bmp", "../res/Lake_Bordered.bmp", 15);
+	// rotateBMP("../res/Lake.bmp", "../res/Lake_Rotated.bmp");
 	printf("Преобразование завершено.\n");
+	int gd = DETECT, gm;
+	initgraph(&gd, &gm, "");
 
+	int width = getmaxx() + 1;
+	int height = getmaxy() + 1;
 
+	save16ColorBMP("16Color.bmp", width, height);
 
+	closegraph();
 	return 0;
 }
