@@ -8,8 +8,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <array>
-#include <graphics.h>
+
+/*
 struct  head {
 	unsigned short id;
 	unsigned long  f_size;
@@ -26,7 +26,7 @@ struct  head {
 	unsigned long  vres;
 	unsigned long  clrused;
 	unsigned long  clrimp;
-} head_file;
+} head_file;*/
 /*
 void convertToBW(const char* inputFileName, const char* outputFileName) {
 	FILE* inputFile;
@@ -235,11 +235,9 @@ void rotateBMP(const std::string& input_filename, const std::string& output_file
 	std::cout << "Transformation completed. Result saved to " << output_filename << "." << std::endl;
 }
 */
-void save16ColorBMP(const char* filename, int width, int height) {
-	
-	std::ofstream bmpFile(filename, std::ios::binary);
+/*
+void save16ColorBMP() {
 
-	// BMP header
 	char header[54] = {
 		'B', 'M',            // Signature
 		0, 0, 0, 0,           // File size
@@ -257,33 +255,7 @@ void save16ColorBMP(const char* filename, int width, int height) {
 		16, 0,                // Number of colors in the palette
 		0, 0, 0, 0            // Number of important colors
 	};
-
-	bmpFile.write(header, sizeof(header));
-
-	// Palette for 16 colors
-	for (int i = 0; i < 16; ++i) {
-		char color[4] = { static_cast<char>(i * 16), static_cast<char>(i * 16), static_cast<char>(i * 16), 0 };
-		bmpFile.write(color, sizeof(color));
-	}
-
-	int color;
-	for (int y = height - 1; y >= 0; --y) {
-		for (int x = 0; x < width; ++x) {
-			// Example: Assign a color based on x and y position
-			color = (x / 32) % 16;
-
-			// Writing pixel data
-			char pixel[2] = { static_cast<char>(color), 0 };
-			bmpFile.write(pixel, sizeof(pixel));
-		}
-		// Padding to align scanlines on 4-byte boundaries
-		char padding[3] = { 0, 0, 0 };
-		bmpFile.write(padding, (4 - (width * 2) % 4) % 4);
-	}
-
-	bmpFile.close();
-}
-
+	*/
 
 int main() {
 
@@ -293,14 +265,10 @@ int main() {
 	// addBorder("../res/Lake.bmp", "../res/Lake_Bordered.bmp", 15);
 	// rotateBMP("../res/Lake.bmp", "../res/Lake_Rotated.bmp");
 	printf("Преобразование завершено.\n");
-	int gd = DETECT, gm;
-	initgraph(&gd, &gm, "");
-
-	int width = getmaxx() + 1;
-	int height = getmaxy() + 1;
-
-	save16ColorBMP("16Color.bmp", width, height);
-
+	/*
+	initwindow(500, 500);
+	getch();
 	closegraph();
+	*/
 	return 0;
 }
