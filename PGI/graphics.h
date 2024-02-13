@@ -264,7 +264,7 @@ void getmoderange( int graphdriver, int *lomode, int *himode );
 void graphdefaults( );
 char *grapherrormsg( int errorcode );
 int graphresult( );
-void initgraph( int *graphdriver, int *graphmode, char *pathtodriver );
+void initgraph( int *graphdriver, int *graphmode, const char *pathtodriver );
 int initwindow
     ( int width, int height, const char* title="Windows BGI", int left=0, int top=0, bool dbflag=false, bool closeflag=true );
 int installuserdriver( char *name, int *fp );    // Not available in WinBGI

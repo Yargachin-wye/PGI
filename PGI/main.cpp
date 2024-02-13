@@ -1,4 +1,4 @@
-#pragma pack (1)
+// #pragma pack (1)
 #include <stdio.h>
 #include <locale.h>
 #include <wchar.h>
@@ -8,8 +8,11 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <array>
+#include <stdlib.h>
+#include "graphics.h"
+#pragma comment(lib,"graphics.lib")
 
-/*
 struct  head {
 	unsigned short id;
 	unsigned long  f_size;
@@ -26,8 +29,48 @@ struct  head {
 	unsigned long  vres;
 	unsigned long  clrused;
 	unsigned long  clrimp;
-} head_file;*/
-/*
+} head_file;
+
+struct Color
+{
+	unsigned char values[4];
+};
+
+std::vector< std::vector<unsigned char> > ReadPixels(const char* inputFileName)
+{
+	std::vector< std::vector<unsigned char> > m_pixels = std::vector< std::vector<unsigned char> >();
+	FILE* file;
+	if (fopen_s(&file, inputFileName, "rb") != 0) {
+		printf("Не удалось открыть файл для чтения.\n");
+		return m_pixels;
+	}
+
+	struct head header;
+	fread(&header, sizeof(header), 1, file);
+	fseek(file, header.bm_offset, SEEK_SET);
+	const auto padding = (header.sizeimage / header.height * 8 - header.width * header.bitperpixel) / 8;
+
+	for (size_t i = 0; i < header.height; i++)
+	{
+		const auto Length = header.width * header.bitperpixel / 8;
+		auto row = new unsigned char[Length];
+		for (size_t j = 0; j < Length; j++)
+		{
+			fread(&row[j], 1, 1, file);
+			if (ferror(file) != 0)
+			{
+				return m_pixels;
+			}
+		}
+		fseek(file, padding, SEEK_CUR);
+
+		m_pixels.push_back(std::vector<unsigned char>(row, row + Length));
+		delete row;
+	}
+
+	return m_pixels;
+}
+
 void convertToBW(const char* inputFileName, const char* outputFileName) {
 	FILE* inputFile;
 	FILE* outputFile;
@@ -196,6 +239,7 @@ void rotateBMP(const std::string& input_filename, const std::string& output_file
 	int32_t new_height = header.width;
 
 	// Update header with new dimensions
+
 	header.width = new_width;
 	header.height = new_height;
 	header.sizeimage = (new_width * 3 + (4 - (new_width * 3) % 4) % 4) * new_height + header.bm_offset;
@@ -231,44 +275,84 @@ void rotateBMP(const std::string& input_filename, const std::string& output_file
 			output_file.put('\0');
 		}
 	}
-
-	std::cout << "Transformation completed. Result saved to " << output_filename << "." << std::endl;
 }
-*/
-/*
-void save16ColorBMP() {
 
-	char header[54] = {
-		'B', 'M',            // Signature
-		0, 0, 0, 0,           // File size
-		0, 0, 0, 0,           // Reserved
-		54, 0, 0, 0,          // Image data offset
-		40, 0, 0, 0,          // Header size
-		static_cast<char>(width), static_cast<char>(width >> 8), static_cast<char>(width >> 16), static_cast<char>(width >> 24),  // Width
-		static_cast<char>(height), static_cast<char>(height >> 8), static_cast<char>(height >> 16), static_cast<char>(height >> 24),  // Height
-		1, 0,                 // Color planes
-		4, 0,                 // Bits per pixel
-		0, 0, 0, 0,           // Compression
-		0, 0, 0, 0,           // Image size
-		0, 0, 0, 0,           // Horizontal resolution
-		0, 0, 0, 0,           // Vertical resolution
-		16, 0,                // Number of colors in the palette
-		0, 0, 0, 0            // Number of important colors
-	};
-	*/
+void PrintBMP(const char* inputFileName) {
+	FILE* inputFile;
+	if (fopen_s(&inputFile, inputFileName, "rb") != 0) {
+		printf("Не удалось открыть файл для чтения.\n");
+		return;
+	}
+
+	struct head header;
+	fread(&header, sizeof(header), 1, inputFile);
+
+	fseek(inputFile, header.bm_offset, SEEK_SET);
+
+	unsigned char pixel[3];
+
+	const int bytePerPixel = header.bitperpixel / 8;
+	const bool usePalitra = header.bitperpixel <= 8;
+	auto pixels = ReadPixels(inputFileName);
+	auto palitra = std::vector<Color>();
+
+	fseek(inputFile, header.bm_offset, SEEK_SET);
+
+	for (size_t i = 0; i < (header.bm_offset - sizeof(header)) / 4; i++)
+	{
+		Color temp = Color();
+		fread(temp.values, 1, 4, inputFile);
+		if (ferror(inputFile) != 0)
+		{
+			return;
+		}
+
+		palitra.push_back(temp);
+	}
+	int gd = DETECT, gm, color;
+
+	// initgraph initializes the 
+	// graphics system by loading a 
+	// graphics driver from disk 
+	initgraph(&gd, &gm, "");
+
+	for (size_t i = 0; i < pixels.size(); i++)
+	{
+		auto& row = pixels[i];
+
+		if (usePalitra)
+		{
+			for (size_t j = 0; j < row.size(); j++)
+			{
+				auto& color = palitra[row[j]];
+				putpixel(j, header.height - i, RGB(color.values[2], color.values[1], color.values[0]));
+			}
+		}
+		else
+		{
+			for (size_t j = 0; j < row.size(); j += bytePerPixel)
+			{
+				putpixel(j / 3, header.height - i, RGB(row[j + 2], row[j + 1], row[j]));
+			}
+		}
+	}
+	getch();
+	std::cin.get();
+
+	closegraph();
+	fclose(inputFile);
+}
 
 int main() {
 
 	setlocale(LC_ALL, "");
-
 	// convertToBW("../res/Lake.bmp", "../res/Lake_BW.bmp");
 	// addBorder("../res/Lake.bmp", "../res/Lake_Bordered.bmp", 15);
 	// rotateBMP("../res/Lake.bmp", "../res/Lake_Rotated.bmp");
+
+	PrintBMP("../res/Lake.bmp");
+
 	printf("Преобразование завершено.\n");
-	/*
-	initwindow(500, 500);
-	getch();
-	closegraph();
-	*/
+
 	return 0;
 }

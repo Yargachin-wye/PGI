@@ -1,2 +1,29 @@
 ﻿  main.cpp
-  PGI.vcxproj -> C:\Users\henry\OneDrive\Documents\GitHub\PGI\Debug\PGI.exe
+D:\repos\PGI\PGI\main.cpp(53,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\repos\PGI\PGI\main.cpp(57,24): warning C4018: <: несоответствие типов со знаком и без знака
+D:\repos\PGI\PGI\main.cpp(147,42): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(147,56): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(147,70): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(147,84): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(154,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\repos\PGI\PGI\main.cpp(169,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(169,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(169,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(182,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(182,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(182,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(195,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(195,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(195,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(209,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(209,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(209,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
+D:\repos\PGI\PGI\main.cpp(292,16): warning C4101: pixel: неиспользованная локальная переменная
+D:\repos\PGI\PGI\main.cpp(312,23): warning C4101: color: неиспользованная локальная переменная
+graphics.lib(dibutil.obj) : warning LNK4099: "" PDB не найден с "graphics.lib(dibutil.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+graphics.lib(drawing.obj) : warning LNK4099: "" PDB не найден с "graphics.lib(drawing.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+graphics.lib(file.obj) : warning LNK4099: "" PDB не найден с "graphics.lib(file.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+graphics.lib(misc.obj) : warning LNK4099: "" PDB не найден с "graphics.lib(misc.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+graphics.lib(winbgi.obj) : warning LNK4099: "" PDB не найден с "graphics.lib(winbgi.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+graphics.lib(winthread.obj) : warning LNK4099: "" PDB не найден с "graphics.lib(winthread.obj)" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+  PGI.vcxproj -> D:\repos\PGI\Debug\PGI.exe
