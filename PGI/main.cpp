@@ -31,45 +31,8 @@ struct  head {
 	unsigned long  clrimp;
 } head_file;
 
-struct Color
-{
-	unsigned char values[4];
-};
+using namespace std;
 
-std::vector< std::vector<unsigned char> > ReadPixels(const char* inputFileName)
-{
-	std::vector< std::vector<unsigned char> > m_pixels = std::vector< std::vector<unsigned char> >();
-	FILE* file;
-	if (fopen_s(&file, inputFileName, "rb") != 0) {
-		printf("Не удалось открыть файл для чтения.\n");
-		return m_pixels;
-	}
-
-	struct head header;
-	fread(&header, sizeof(header), 1, file);
-	fseek(file, header.bm_offset, SEEK_SET);
-	const auto padding = (header.sizeimage / header.height * 8 - header.width * header.bitperpixel) / 8;
-
-	for (size_t i = 0; i < header.height; i++)
-	{
-		const auto Length = header.width * header.bitperpixel / 8;
-		auto row = new unsigned char[Length];
-		for (size_t j = 0; j < Length; j++)
-		{
-			fread(&row[j], 1, 1, file);
-			if (ferror(file) != 0)
-			{
-				return m_pixels;
-			}
-		}
-		fseek(file, padding, SEEK_CUR);
-
-		m_pixels.push_back(std::vector<unsigned char>(row, row + Length));
-		delete row;
-	}
-
-	return m_pixels;
-}
 
 void convertToBW(const char* inputFileName, const char* outputFileName) {
 	FILE* inputFile;
@@ -277,70 +240,51 @@ void rotateBMP(const std::string& input_filename, const std::string& output_file
 	}
 }
 
+unsigned char quantizeColor(unsigned char color, int& colorNumber) {
+	// Определите количество уровней квантования
+	int levels = 4; // 4 уровня для примера
+
+	// Рассчитайте шаг квантования
+	int step = 255 / (levels - 1);
+
+	// Найдите ближайший уровень квантования
+	int quantized = round(color / step) * step;
+
+	// Определите номер цвета соответствующий перечислению colors
+	if (quantized == 0) colorNumber = BLACK;
+	else if (quantized == 85) colorNumber = BLUE;
+	else if (quantized == 170) colorNumber = GREEN;
+	else if (quantized == 255) colorNumber = WHITE;
+
+	return quantized;
+}
+
 void PrintBMP(const char* inputFileName) {
-	FILE* inputFile;
-	if (fopen_s(&inputFile, inputFileName, "rb") != 0) {
-		printf("Не удалось открыть файл для чтения.\n");
-		return;
+	std::ifstream inputFile(inputFileName, std::ios::binary); // Открываем входной файл в бинарном режиме
+
+	if (!inputFile.is_open()) {
+		cout << "Не удалось открыть входной файл!" << endl;
+		return ;
 	}
+	head head_file;
+	inputFile.read(reinterpret_cast<char*>(&head_file), sizeof(head_file));
 
-	struct head header;
-	fread(&header, sizeof(header), 1, inputFile);
-
-	fseek(inputFile, header.bm_offset, SEEK_SET);
-
-	unsigned char pixel[3];
-
-	const int bytePerPixel = header.bitperpixel / 8;
-	const bool usePalitra = header.bitperpixel <= 8;
-	auto pixels = ReadPixels(inputFileName);
-	auto palitra = std::vector<Color>();
-
-	fseek(inputFile, header.bm_offset, SEEK_SET);
-
-	for (size_t i = 0; i < (header.bm_offset - sizeof(header)) / 4; i++)
-	{
-		Color temp = Color();
-		fread(temp.values, 1, 4, inputFile);
-		if (ferror(inputFile) != 0)
-		{
-			return;
-		}
-
-		palitra.push_back(temp);
-	}
 	int gd = DETECT, gm, color;
-
-	// initgraph initializes the 
-	// graphics system by loading a 
-	// graphics driver from disk 
 	initgraph(&gd, &gm, "");
 
-	for (size_t i = 0; i < pixels.size(); i++)
-	{
-		auto& row = pixels[i];
-
-		if (usePalitra)
-		{
-			for (size_t j = 0; j < row.size(); j++)
-			{
-				auto& color = palitra[row[j]];
-				putpixel(j, header.height - i, RGB(color.values[2], color.values[1], color.values[0]));
-			}
-		}
-		else
-		{
-			for (size_t j = 0; j < row.size(); j += bytePerPixel)
-			{
-				putpixel(j / 3, header.height - i, RGB(row[j + 2], row[j + 1], row[j]));
-			}
+	for (int y = 0; y < head_file.height; y++) {
+		for (int x = 0; x < head_file.width; x++) {
+			char pixel[3];
+			inputFile.read(pixel, 3);
+			putpixel(x, y, COLOR(pixel[2], pixel[1], pixel[0]));
+			cout << x  << ";" << y << endl;
 		}
 	}
-	getch();
-	std::cin.get();
 
+	getch();
 	closegraph();
-	fclose(inputFile);
+
+	inputFile.close();
 }
 
 int main() {
@@ -351,6 +295,14 @@ int main() {
 	// rotateBMP("../res/Lake.bmp", "../res/Lake_Rotated.bmp");
 
 	PrintBMP("../res/Lake.bmp");
+
+	/*
+	int gd = DETECT, gm, color;
+	initgraph(&gd, &gm, "");
+
+	getch();
+	closegraph();
+	*/
 
 	printf("Преобразование завершено.\n");
 
