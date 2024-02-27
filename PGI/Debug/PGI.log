@@ -1,21 +1,2 @@
 ﻿  main.cpp
-D:\repos\PGI\PGI\main.cpp(110,42): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(110,56): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(110,70): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(110,84): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(117,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\repos\PGI\PGI\main.cpp(132,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(132,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(132,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(145,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(145,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(145,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(158,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(158,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(158,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(172,43): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(172,57): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(172,71): warning C4838: Преобразование из "int" в "unsigned char" требует сужающего преобразования.
-D:\repos\PGI\PGI\main.cpp(251,16): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-D:\repos\PGI\PGI\main.cpp(272,23): warning C4101: color: неиспользованная локальная переменная
   PGI.vcxproj -> D:\repos\PGI\Debug\PGI.exe
