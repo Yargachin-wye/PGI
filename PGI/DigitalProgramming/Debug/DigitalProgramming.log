@@ -1,0 +1,10 @@
+﻿  Lab7.cpp
+C:\Users\henry\OneDrive\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4244: return: преобразование "unsigned long" в "unsigned short", возможна потеря данных
+C:\Users\henry\OneDrive\Desktop\PGI\DigitalProgramming\Lab7.h(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\henry\OneDrive\Desktop\PGI\DigitalProgramming\Lab7.cpp(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\henry\OneDrive\Desktop\PGI\DigitalProgramming\Lab7.cpp(34,17): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Users\henry\OneDrive\Desktop\PGI\DigitalProgramming\Lab7.cpp(60,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\henry\OneDrive\Desktop\PGI\DigitalProgramming\Lab7.cpp(62,41): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned int", возможна потеря данных
+C:\Users\henry\OneDrive\Desktop\PGI\DigitalProgramming\Lab7.cpp(83,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\henry\OneDrive\Desktop\PGI\DigitalProgramming\Lab7.cpp(85,40): warning C4244: аргумент: преобразование "unsigned __int64" в "const unsigned int", возможна потеря данных
+  DigitalProgramming.vcxproj -> C:\Users\henry\OneDrive\Desktop\PGI\Debug\PGI.exe

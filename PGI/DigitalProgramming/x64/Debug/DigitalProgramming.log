@@ -1,0 +1,85 @@
+﻿  BMP_File.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(1,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(173,108): warning C4244: аргумент: преобразование "unsigned short" в "unsigned char", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(376,32): warning C4267: =: преобразование из "size_t" в "long"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(377,18): warning C4267: =: преобразование из "size_t" в "long"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(383,28): warning C4267: =: преобразование из "size_t" в "unsigned long"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(396,14): warning C4244: =: преобразование "unsigned __int64" в "unsigned short", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(407,15): warning C4244: +=: преобразование "double" в "unsigned __int64", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(408,15): warning C4244: +=: преобразование "double" в "unsigned __int64", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(409,14): warning C4244: +=: преобразование "double" в "unsigned __int64", возможна потеря данных
+  PGI.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab1.h(4,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\PGI.cpp(5,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\PGI.cpp(37,3): error C2561: main: функция должна возвращать значение
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\PGI.cpp(14,5): message : см. объявление "main"
+  Lab1.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab1.h(4,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab1.cpp(1,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+  Lab2.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab2.h(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab2.cpp(1,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab2.cpp(28,35): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab2.cpp(41,53): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab2.cpp(54,32): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab2.cpp(67,32): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  Lab3.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab3.h(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab3.cpp(1,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+  Lab4.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab4.h(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab4.cpp(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab4.cpp(24,48): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab4.cpp(24,45): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab4.cpp(25,42): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab4.cpp(25,22): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  Lab5.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.h(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.cpp(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.cpp(11,20): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.cpp(22,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.cpp(22,32): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.cpp(27,57): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.cpp(27,47): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.cpp(28,49): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab5.cpp(28,22): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  Lab6.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.h(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.cpp(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.cpp(35,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.cpp(35,51): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.cpp(40,62): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.cpp(40,59): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.cpp(43,53): warning C4244: =: преобразование "float" в "unsigned char", возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.cpp(46,45): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab6.cpp(46,22): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  Lab7.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.h(30,88): warning C4267: return: преобразование из "size_t" в "unsigned short"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab7.h(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab7.cpp(3,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab7.cpp(34,17): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab7.cpp(60,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab7.cpp(83,27): warning C4018: <: несоответствие типов со знаком и без знака
+  Lab8.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab8.cpp(2,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab8.cpp(26,48): warning C4267: аргумент: преобразование из "size_t" в "unsigned int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab8.cpp(26,45): warning C4267: аргумент: преобразование из "size_t" в "unsigned int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab8.cpp(27,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\Lab8.cpp(27,22): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  PCX_File.cpp
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\PCX_File.cpp(2,1): warning C4103: выравнивание изменилось после включения заголовка, возможно из-за отсутствия директивы #pragma pack(pop)
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\PCX_File.cpp(127,12): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  Utils.cpp
+  Создание кода...
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\PCX_File.cpp(66): warning C4172: возвращение адреса локальной или временной переменной
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(155): warning C4172: возвращение адреса локальной или временной переменной
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(189): warning C4172: возвращение адреса локальной или временной переменной
+C:\Users\Yargachin\Desktop\PGI\DigitalProgramming\BMP_File.cpp(212): warning C4172: возвращение адреса локальной или временной переменной : color
